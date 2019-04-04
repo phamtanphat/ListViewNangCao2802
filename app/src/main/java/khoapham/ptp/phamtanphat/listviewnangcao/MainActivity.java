@@ -28,6 +28,6 @@ public class MainActivity extends AppCompatActivity {
         monans.add(new Monan("Cơm sườn", 25000,R.drawable.comsuon));
         monanAdapter = new MonanAdapter(monans,this);
         lvMonan.setAdapter(monanAdapter);
-        
+
     }
 }
