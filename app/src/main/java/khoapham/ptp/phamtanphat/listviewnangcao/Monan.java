@@ -1,11 +1,11 @@
 package khoapham.ptp.phamtanphat.listviewnangcao;
 
-public class Moan {
+public class Monan {
     private String ten;
     private int giatien;
     private Integer hinhanh;
 
-    public Moan(String ten, int giatien, Integer hinhanh) {
+    public Monan(String ten, int giatien, Integer hinhanh) {
         this.ten = ten;
         this.giatien = giatien;
         this.hinhanh = hinhanh;
