@@ -1,64 +1,39 @@
 package khoapham.ptp.phamtanphat.listviewnangcao;
 
+
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class MonanAdapter extends BaseAdapter {
-    ArrayList<Monan> mangmonan;
-    Context context;
+public class MonanAdapter extends ArrayAdapter<Monan> {
 
-    public MonanAdapter(ArrayList<Monan> monans , Context context){
-        mangmonan = monans;
-        this.context = context;
+
+    public MonanAdapter( @NonNull Context context, int resource,@NonNull List<Monan> objects) {
+        super(context, resource, objects);
     }
+
+
+    @NonNull
     @Override
-    public int getCount() {
-        return mangmonan.size();
-    }
+    public View getView(int position, @Nullable View convertView,  @NonNull ViewGroup parent) {
+        LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+        convertView = layoutInflater.inflate(R.layout.dong_monan_item,null);
+        TextView txtTenmonan = convertView.findViewById(R.id.textviewTenmonan);
+        TextView txtGiamonan = convertView.findViewById(R.id.textviewGiamonan);
+        ImageView imgMonan = convertView.findViewById(R.id.imageviewMonan);
 
-    @Override
-    public Object getItem(int position) {
-        return mangmonan.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-    class ViewHolder{
-        TextView txtTenmonan , txtGiamonan;
-        ImageView imgMonan;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        if (convertView == null){
-            LayoutInflater layoutInflater = LayoutInflater.from(context);
-            convertView = layoutInflater.inflate(R.layout.dong_monan_item,null);
-            viewHolder = new ViewHolder();
-            viewHolder.txtTenmonan = convertView.findViewById(R.id.textviewTenmonan);
-            viewHolder.txtGiamonan = convertView.findViewById(R.id.textviewGiamonan);
-            viewHolder.imgMonan = convertView.findViewById(R.id.imageviewMonan);
-            convertView.setTag(viewHolder);
-        }else{
-            convertView.getTag();
-
-        }
-        Monan monan = (Monan) getItem(position);
-        viewHolder.txtTenmonan.setText(monan.getTen());
-        viewHolder.txtGiamonan.setText(monan.getGiatien() + " Đồng ");
-        viewHolder.imgMonan.setImageResource(monan.getHinhanh());
-
-
-
+        Monan monan =  getItem(position);
+        txtTenmonan.setText(monan.getTen());
+        txtGiamonan.setText(monan.getGiatien() + " Đồng ");
+        imgMonan.setImageResource(monan.getHinhanh());
         return convertView;
     }
 }
