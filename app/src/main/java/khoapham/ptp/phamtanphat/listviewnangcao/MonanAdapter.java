@@ -15,12 +15,9 @@ import java.util.List;
 
 public class MonanAdapter extends ArrayAdapter<Monan> {
 
-
     public MonanAdapter( @NonNull Context context, int resource,@NonNull List<Monan> objects) {
         super(context, resource, objects);
     }
-
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView,  @NonNull ViewGroup parent) {
